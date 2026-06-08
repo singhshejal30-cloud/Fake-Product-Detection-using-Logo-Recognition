@@ -14,6 +14,7 @@
 import streamlit as st
 import cv2
 import os
+import zipfile
 import numpy as np
 from ultralytics import YOLO
 
@@ -119,8 +120,11 @@ model = YOLO("yolov8n.pt")
 
 # CHANGE THIS PATH ACCORDING TO YOUR COMPUTER
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-dataset_path = os.path.join(BASE_DIR, "fake_logo")
+if not os.path.exists("fake_logo") and os.path.exists("fake_logo.zip"):
+    with zipfile.ZipFile("fake_logo.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
+
+dataset_path = "fake_logo"
 
 # =========================================================
 # LOAD LOGO DATASET
