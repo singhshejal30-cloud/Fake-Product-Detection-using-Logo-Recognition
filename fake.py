@@ -119,7 +119,8 @@ model = YOLO("yolov8n.pt")
 
 # CHANGE THIS PATH ACCORDING TO YOUR COMPUTER
 
-dataset_path = "fake_logo"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+dataset_path = os.path.join(BASE_DIR, "fake_logo")
 
 # =========================================================
 # LOAD LOGO DATASET
